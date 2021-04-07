@@ -1,0 +1,37 @@
+<%- include('./includes/head.ejs') %>
+	<%- include('./includes/menu.ejs')%>
+
+	<div class="tm-paging-links">
+		<nav>
+			<ul>
+				<li class="tm-paging-item"><a href="#" class="tm-paging-link active">All</a></li>
+				<li class="tm-paging-item"><a href="#" class="tm-paging-link">Music album</a></li>
+				<li class="tm-paging-item"><a href="#" class="tm-paging-link">Fashion</a></li>
+				<li class="tm-paging-item"><a href="#" class="tm-paging-link">Photobook</a></li>
+			</ul>
+		</nav>
+	</div>
+	
+	<!-- Gallery -->
+	<div class="row tm-gallery">
+		<% if (prods.length > 0) { %> 
+			<% prods.map((product, index) => { %>
+		<div id="tm-gallery-page-pizza" class="tm-gallery-page">
+			<article class="tm-gallery-item">
+				<figure>
+					<img src="<%- product.image%>" alt="Image" class="img-fluid" />
+					<figcaption>
+						<h4 class="tm-gallery-title"><%- product.product_name%></h4>
+						<p class="tm-gallery-description"><%- product.details%></p>
+						<p class="tm-gallery-price">฿ <%- product.price%>.00</p>
+					</figcaption>
+				</figure>
+			</article>
+		</div>
+		<% }) %> 
+				<% } else   { %>
+				<h1>No Products Found!</h1>
+		<% } %>
+	</div>
+
+				<%- include('./includes/end.ejs') %>
