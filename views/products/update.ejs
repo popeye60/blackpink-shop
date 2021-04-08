@@ -1,48 +1,51 @@
 <%- include('../includes/head.ejs') %>
 
         <div class="container mt-3">
-            <h2>Update Products</h2>
+            <h2 style="text-align: center; padding-top: 10px;">UPDATE PRODUCTS</h2>
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
                             <% if (errorMessage) { %>
-                                <div class="alert alert-warning" role="alert">
-                                    <%= errorMessage[0].param + ': '+ errorMessage[0].msg %>
+                            <div class="alert alert-warning" role="alert">
+                                <%= errorMessage[0].param + ': '+ errorMessage[0].msg %>
+                            </div>
+                            <% } %>
+                            <form method="POST" action="/products/update">
+                                <input type="hidden" name="product_id" value="<%- product_id %>">
+                                <div class="form-group">
+                                    <label for="product_name">Product Name</label>
+                                    <input type="text" class="form-control" name="product_name" placeholder="Product Name" value="<%= product_name %>">
                                 </div>
-                                <% } %>
-                                <form method="POST" action="/products/update">
-                                    <input type="hidden" name="product_id" value="<%- product_id %>">
-                                    <div class="form-group">
-                                        <label for="product_name">ชื่อสินค้า</label>
-                                        <input type="text" class="form-control" name="product_name" placeholder="ชื่อสินค้า" value="<%= product_name %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="price">ราคา</label>
-                                        <input type="number" class="form-control" name="price" placeholder="ราคาสินค้า" value="<%= price %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="remaining">จำนวน</label>
-                                        <input type="number" class="form-control" name="remaining" placeholder="จำนวน" value="<%= remaining %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="details">รายละเอียดสินค้า</label>
-                                        <input type="text" class="form-control" name="details" placeholder="รายละเอียดสินค้า" value="<%= details %>">
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control" name="category" value="<%= category %>">
-                                          <option value="">Product Type</option>
-                                          <option>Music album</option>
-                                          <option>Fashion</option>
-                                          <option>Photobook</option>
-                                        </select>
-                                    <div class="form-group">
-                                        <label for="image">รูปสินค้า</label>
-                                        <input type="text" class="form-control" name="image" placeholder="กรุณาใส่ที่อยู่รูปภาพ" value="<%= image %>">
-                                    </div>
-                                    <a href="/products/search" class="btn btn-secondary"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
-                                    <button type="submit" class="btn btn-success"> <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-                                </form>
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="number" class="form-control" name="price" placeholder="Price" value="<%= price %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="remaining">Remaining</label>
+                                    <input type="number" class="form-control" name="remaining" placeholder="Remaining" value="<%= remaining %>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="details">Details</label>
+                                    <input type="text" class="form-control" name="details" placeholder="Details" value="<%= details %>">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="category" value="<%= category %>">
+                                        <option value="">Product Type</option>
+                                        <option>Music album</option>
+                                        <option>Fashion</option>
+                                        <option>Photobook</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <input type="text" class="form-control" name="image" placeholder="Image" value="<%= image %>">
+                                </div>
+                                <div class="form-group">
+                                    <button href="/products/search" class="button button2">Back</button>
+                                    <button type="submit" class="button button1">Save</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -75,6 +75,22 @@ class Products {
                 console.log(err);
             });
     }
+
+    static fetchAllByPhotobook() {
+        const db = getDb();
+        return db
+            .collection('products')
+            .find({category:"Photobook"})
+            .toArray()
+            .then(products => {
+                // console.log(products);
+                return products;
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     static getSearchProductByPhotobook() {
         const db = getDb();
         return db

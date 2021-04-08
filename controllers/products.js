@@ -73,6 +73,7 @@ exports.getSearchProduct = (req, res, next) => {
         });
 }
 exports.getAddProduct = (req, res, next) => {
+    const product_id = '';
     const image = '';
     const product_name = '';
     const details = '';
@@ -93,7 +94,7 @@ exports.getAddProduct = (req, res, next) => {
 };
 exports.postAddProduct = (req, res, next) => {
     console.log(req.body);
-    const { image, product_name, details, remaining, price, category} = req.body;
+    const { image, product_name, product_id, details, remaining, price, category} = req.body;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.render('products/insert', {
@@ -114,7 +115,7 @@ exports.postAddProduct = (req, res, next) => {
         .then(result => {
             // console.log(result);
             console.log('Created Product');
-            res.redirect('/products');
+            res.redirect('/products/search');
         })
         .catch(err => {
             console.log(err);
@@ -177,7 +178,7 @@ exports.postUpdateProduct = (req, res, next) => {
         .save()
         .then(result => {
             console.log('Update Product');
-            res.redirect('/products');
+            res.redirect('/products/search');
         })
         .catch(err => console.log(err));
 };
@@ -187,7 +188,7 @@ exports.getDeleteProduct = (req, res, next) => {
     Product.deleteById(product_id)
         .then(() => {
             console.log('Delete Product');
-            res.redirect('/products');
+            res.redirect('/products/search');
         })
         .catch(err => console.log(err));
 };
