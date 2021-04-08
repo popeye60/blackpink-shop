@@ -17,6 +17,47 @@ exports.getSearchProductShop = (req, res, next) => {
             console.log(err);
         });
 }
+exports.getSearchProductByMusicalbum = (req, res, next) => {
+
+    Product.fetchAllByMusicalbum()
+        .then(products => {
+            res.render('products/musicalbum', {
+                pageTitle: 'Search musicalbum',
+                prods: products,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+exports.getSearchProductByFashion = (req, res, next) => {
+
+    Product.fetchAllByFashion()
+        .then(products => { 
+            res.render('products/fashion', {
+                pageTitle: 'Search fashion',
+                prods: products,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+exports.getSearchProductByPhotobook = (req, res, next) => {
+
+    Product.fetchAllByPhotobook()
+        .then(products => {
+            res.render('products/photobook', {
+                pageTitle: 'Search photobook',
+                prods: products,
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
 
 exports.getSearchProduct = (req, res, next) => {
 
