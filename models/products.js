@@ -51,7 +51,7 @@ class Products {
         const db = getDb();
         return db
             .collection('products')
-            .find({category:"Musicalbum"})
+            .find({category:"Music album"})
             .toArray()
             .then(products => {
                 // console.log(products);
@@ -117,5 +117,6 @@ class Products {
             });
     }
 }
+
 
 module.exports = Products;

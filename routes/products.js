@@ -8,6 +8,9 @@ const productsController = require('../controllers/products');
 
 // /admin/add-product => GET
 router.get('/', productsController.getSearchProductShop);
+router.get('/musicalbum', productsController.getSearchProductByMusicalbum);
+router.get('/fashion', productsController.getSearchProductByFashion);
+router.get('/photobook', productsController.getSearchProductByPhotobook);
 
 router.get('/search', productsController.getSearchProduct);
 
