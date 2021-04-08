@@ -24,6 +24,15 @@
 						<h4 class="tm-gallery-title"><%- product.product_name%></h4>
 						<p class="tm-gallery-description"><%- product.details%></p>
 						<p class="tm-gallery-price">฿ <%- product.price%>.00</p>
+							<form method="post" action="/addTocart">
+								<button
+								  type="submit"
+								  name="add_to_cart"
+								  value="<%- product.product_name%>"
+								>
+								  Add to cart
+								</button>
+							  </form>
 					</figcaption>
 				</figure>
 			</article>
@@ -34,4 +43,4 @@
 		<% } %>
 	</div>
 
-				<%- include('./includes/end.ejs') %>
+		<%- include('./includes/end.ejs') %>

@@ -132,6 +132,21 @@ class Products {
                 console.log(err);
             });
     }
+
+    static findByName(prodName) {
+        const db = getDb();
+        return db
+          .collection("products")
+          .find({ product_name: prodName })
+          .next()
+          .then((product) => {
+            console.log(product);
+            return product;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    }
 }
 
 

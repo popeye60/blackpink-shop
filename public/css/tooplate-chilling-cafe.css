@@ -275,7 +275,28 @@ a {
 
 .button1 {
   background-color: #4caf50;
+  border-radius: 10px;
+  height: auto;
 } /* Green */
 .button2 {
   background-color: #008cba;
+  border-radius: 10px;
+  height: auto;
 } /* Blue */
+.button3 {
+  background-color: red;
+  border-radius: 10px;
+  height: auto;
+} /* Blue */
+.button4 {
+  background-color: orange;
+  border-radius: 10px;
+  height: auto;
+} /* Blue */
+
+.btn {
+  color: #ffffff;
+}
+.btn btn-warning {
+  color: #ffffff !important;
+}

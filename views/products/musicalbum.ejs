@@ -1,59 +1,36 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
-    .newfont {
-        font-family: 'Mitr', sans-serif;
-    }
-</style>
 <%- include('../includes/head.ejs') %> <%- include('../includes/menu.ejs')%>
-
-<div class="product-big-title-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="product-bit-title text-center">
-                    <h2 class="newfont">SMART PHONE</h2>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="tm-paging-links">
+    <nav>
+        <ul>
+            <li class="tm-paging-item"><a href="/" class="tm-paging-link">All</a></li>
+            <li class="tm-paging-item"><a href="/products/musicalbum" class="tm-paging-link active">Music album</a></li>
+            <li class="tm-paging-item"><a href="/products/fashion" class="tm-paging-link">Fashion</a></li>
+            <li class="tm-paging-item"><a href="/products/photobook" class="tm-paging-link">Photobook</a></li>
+        </ul>
+    </nav>
 </div>
 
-<div class="single-product-area">
-    <div class="zigzag-bottom"></div>
-    <div class="container">
-        <div class="row">
-            <% if (prods.length > 0) { %> 
-                <% prods.map((product, index) => { %>
-            <div class="col-md-3 col-sm-6">
-                <div class="single-shop-product">
-                    <div class="product-upper">
-                        <img src="<%- product.img_path%>" alt="" />
-                    </div>
-                    <form action="" method="get">
-                        <!-- <input type="hidden" id="product_id" name="product_id" value="<%= product._id %>"> -->
-                        <a href="<%- '/'+product._id%>"">
-                            <h2 class="newfont"><%- product.product_name%></h2>
-                        </a>
-                    </form>
-                    <div class="product-carousel-price">
-                        <!-- <ins>$899.00</ins> -->
-                        
-                        
-                        <ins>฿ <%- product.price%>.00</ins> 
-                        <del>฿ 999,000.00</del> 
-                        <!-- <%- product.price%> -->
-                    </div>
-
-                    <div class="product-option-shop">
-                        <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
-                    </div>
-                </div>
-            </div>
-            <% }) %> 
+<!-- Gallery -->
+<div class="row tm-gallery">
+    <% if (prods.length > 0) { %> 
+        <% prods.map((product, index) => { %>
+    <div id="tm-gallery-page-pizza" class="tm-gallery-page">
+        <article class="tm-gallery-item">
+            <figure>
+                <img src="<%- product.image%>" alt="Image" class="img-fluid" />
+                <figcaption>
+                    <h4 class="tm-gallery-title"><%- product.product_name%></h4>
+                    <p class="tm-gallery-description"><%- product.details%></p>
+                    <p class="tm-gallery-price">฿ <%- product.price%>.00</p>
+                </figcaption>
+            </figure>
+        </article>
+    </div>
+    <% }) %> 
             <% } else   { %>
             <h1>No Products Found!</h1>
-            <% } %>
-        </div>
+    <% } %>
+</div>
 
         <!-- <div class="row">
             <div class="col-md-12">

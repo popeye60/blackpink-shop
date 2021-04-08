@@ -1,0 +1,99 @@
+<%- include('../includes/head.ejs') %>
+    <!-- end header -->
+    <!-- inner page banner -->
+    <div id="inner_banner" class="section inner_banner_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="full">
+              <div class="title-holder">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end inner page banner -->
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <div class="product-table" style="margin-left: 50px; margin-top: 10px;">
+              <% let total=0; let cartTotal=0; %>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>รูปสินค้า</th>
+                      <th>สินค้า</th>
+                      <th>จำนวน</th>
+                      <th class="text-center">ราคา</th>
+                      <th class="text-center">รวม</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (product_cart.length> 0) { %> <% product_cart.map((product, index)=> { %>
+                        <tr>
+                          <td >
+                            <img style="width:100px; height:100px" src="<%- product.image %>"
+                              alt="#" />
+                          </td>
+                          <td >
+                            <h4>
+                              <a href="#">
+                                <%- product.product_name %>
+                              </a>
+                            </h4>
+                          </td>
+                          <td >
+                            <div class="col-md-12">
+                              <p class="price_table">
+                                <%- product.quantity %>
+                              </p>
+                            </div>
+                          </td>
+                          <td >
+                            <p class="price_table"> ฿<%- product.price %>.00</p>
+                            <% cartTotal=parseInt(product.price)*parseInt(product.quantity) %>
+                          </td>
+                          <td >
+                            <p class="price_table">$<%- cartTotal %>
+                            </p>
+                            <% total=total+cartTotal %>
+                          </td>
+                          <td >
+                            <a type="button" href="/shop/deleteProductCart/<%- product.product_name %>" class="bt_main">
+                              <i class="fa fa-trash"></i> ลบ
+                            </a>
+                          </td>
+                        </tr>
+                        <% }) %>
+                          <% } else { %>
+                            <tr>
+                              <td colspan="5">
+                                <h1>No Products Found!</h1>
+                              </td>
+                            </tr>
+                            <% } %>
+                  </tbody>
+                </table>
+            </div>
+            <% if (product_cart.length> 0) { %>
+              <div class="shopping-cart-cart" style="margin-left: 35%;">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h3>รวม</h3>
+                      </td>
+                      <td class="text-right">
+                        <h4> ฿<%= total %>.00</h4>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <%}%>
+          </div>
+        </div>
+      </div>
+  
+    <%- include('../includes/end.ejs') %>

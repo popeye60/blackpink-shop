@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator')
 
 const mongodb = require('mongodb');
 const Product = require('../models/products');
+const Cart = require("../models/carts");
 const ObjectId = mongodb.ObjectId;
 
 exports.getSearchProductShop = (req, res, next) => {
@@ -178,7 +179,7 @@ exports.postUpdateProduct = (req, res, next) => {
         .save()
         .then(result => {
             console.log('Update Product');
-            res.redirect('/products/search');
+            res.redirect('/search');
         })
         .catch(err => console.log(err));
 };
@@ -188,7 +189,40 @@ exports.getDeleteProduct = (req, res, next) => {
     Product.deleteById(product_id)
         .then(() => {
             console.log('Delete Product');
-            res.redirect('/products/search');
+            res.redirect('/search');
         })
         .catch(err => console.log(err));
 };
+
+exports.showCart = (req, res, next) => {
+    Cart.fetchAll()
+      .then((carts) => {
+        res.render("products/shoppingCart", {
+          pageTitle: "Cart",
+          product_cart: carts,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  exports.addToCart = (req, res, next) => {
+    const { add_to_cart } = req.body;
+    const quantity = 1
+    Product.findByName(add_to_cart).then((product) => {
+      product_name = product.product_name;
+      price = parseInt(product.price);
+      image = product.image;
+      const cart = new Cart(product_name, price, quantity, image);
+      cart
+        .save()
+        .then((result) => {
+          res.redirect("products/shoppingCart");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  };
+  

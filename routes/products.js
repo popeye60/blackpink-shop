@@ -12,12 +12,16 @@ router.get('/musicalbum', productsController.getSearchProductByMusicalbum);
 router.get('/fashion', productsController.getSearchProductByFashion);
 router.get('/photobook', productsController.getSearchProductByPhotobook);
 
+
 router.get('/search', productsController.getSearchProduct);
 
 router.get('/insert', productsController.getAddProduct);
 
 router.get('/update/:product_id', productsController.getUpdateProduct);
 
+router.get("/shoppingCart", productsController.showCart);
+
+router.post('/addToCart', productsController.addToCart);
 // /admin/add-product => POST
 router.post('/insert', [
     check('product_name').trim().not().isEmpty().withMessage("product name is required"),
